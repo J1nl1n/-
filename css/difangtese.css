@@ -1,0 +1,107 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 1366px;
+    height: 768px;
+    background-image: url(../img/地方特色/diwen.png);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.header{ 
+    margin-top: 80px;
+    z-index: 800;
+}
+.xiangyun{
+    position: absolute;
+    left: 25%;
+    top: 25%;
+    transform: translate(-50%,-50%);
+    z-index: 999;
+    width: 784px;
+    height:464px;
+    animation: yunmove 5s infinite;
+}
+@keyframes yunmove {
+    0%{
+        transform: translate(30px);
+    }
+    50%{
+        transform: translate(-30px);
+    }
+    100%{
+        transform: translate(0);
+    }
+}
+.chuanghua{
+    position: absolute;
+    animation: chuanghua 5s infinite;
+}
+@keyframes chuanghua {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+
+}
+.hua1{
+    top: -15%;
+    right: -9%;
+}
+.hua2{
+    bottom: -19%;
+    left: -8%;
+}
+.body{
+    background-image: url(../img/地方特色/body.png);
+    width: 349px;
+    height:3083px; 
+    position: absolute;
+}
+.left{
+    animation: fly 5s infinite;
+    left: 0; 
+}
+.right{
+    animation: fly2 5s infinite;
+    right: 0;
+}
+@keyframes fly {
+    0%{
+        transform: translateY(0) scaleX(-1);
+    }
+    100%{
+        transform: translateY(-1000px) scaleX(-1);
+    }
+
+}
+@keyframes fly2 {
+    0%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(1000px);
+    }
+
+}
+.text{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 1%;
+    font-size: 133px;
+    z-index: 99;
+}

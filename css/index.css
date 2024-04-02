@@ -1,0 +1,173 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 1366px;
+    height: 768px;
+    background-image: url(../img/indexbg.png);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+} 
+.bg{
+    position: absolute;
+    width: 398px;
+    height: 768px;
+    background-image: url(../img/index_zi.png);
+    z-index: 0;
+    animation: fuxian 5s;
+    right: 0;
+}
+@keyframes fuxian {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.wrap{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.wrap .chuanghua,.chuanghua2,.zi{
+    position: absolute;
+}
+.chuanghua{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.yun{
+    position: absolute;
+    z-index: 99;
+    transition: all ease 0.5s;
+}
+.yun1{
+    width: 481px;
+    height: 274px;
+    left: 10px;
+    top: 80px;
+}
+.yun2{
+    width: 566px;
+    height: 244px;
+    left: 850px;
+    top: 400px;
+}
+.chuanghua{
+    width: 598px;
+    height: 577px;
+    background-image: url(../img/startdiwen.png);
+}
+.zi{
+    width: 195px;
+    height: 481px;
+}
+.chuanghua2{
+    background-image: url(../img/dachuanghua.png);
+    width: 569px;
+    height: 523px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@keyframes yunmove1 {
+    0%{
+        transform: translate(30px);
+    }
+    50%{
+        transform: translate(-30px);
+    }
+    100%{
+        transform: translate(0);
+    }
+}
+@keyframes yunmove2 {
+    0%{
+        transform: translate(-30px);
+    }
+    50%{
+        transform: translate(30px);
+    }
+    100%{
+        transform: translate(0);
+    }
+}
+.yun2{
+    animation: yunmove2 5s infinite;
+    animation-duration: 5s;
+}
+.yun1{
+    animation: yunmove1 5s infinite;
+    animation-duration: 5s;
+}
+@keyframes roateChuan {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+
+}
+@keyframes fanRoate {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(-360deg);
+    }
+
+}
+@keyframes xiaoshi {
+    0%{
+        transform: translateY(-100px);
+    }
+    100%{ 
+        opacity: 0;
+    }
+
+}
+@keyframes xiaoshi {
+    0%{
+        transform: translateY(-100px);
+    }
+    100%{ 
+        opacity: 0;
+    }
+
+}
+@keyframes kaishi {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+        transform: scale(0.5);
+    }
+    100%{ 
+        opacity: 0.3;
+        transform: scale(10);
+    }
+}
+.renyi{
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 30px;
+}

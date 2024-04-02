@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/guoneifazhang.css">
+</head>
+<body>
+    <div class="container" onclick="toGuoJi()">
+        <div class="wrap1"  onclick="event.stopPropagation()">
+            <div class="scorll_1 scroll">
+                <div class="frist modules">
+                    <div class="item1 item" onclick="showtips(0)">
+                        <img src="./img/国内发展/点击交互1.png" alt="">
+                    </div>
+                    <div class="item2 item" onclick="showtips(1)">
+                        <img src="./img/国内发展/点击交互2.png" alt="">
+                    </div>
+                    <div class="item3 item" onclick="showtips(2)">
+                        <img src="./img/国内发展/点击交互3.png" alt="">
+                    </div>
+                    <div class="item4 item" onclick="showtips(3)">
+                        <img src="./img/国内发展/点击交互4.png" alt="">
+                    </div>
+                    <div class="item5 item" onclick="showtips(4)">
+                        <img src="./img/国内发展/点击交互5.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap2">
+            <div class="scroll_2 scroll">
+                <div class="second modules" onclick="changeCard(event)">
+                    <div class="yi paper"></div>
+                    <div class="er paper"></div>
+                    <div class="san paper"></div>
+                    <div class="si paper"></div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap3"  onclick="event.stopPropagation()">
+            <div class="scroll_3 scroll">
+                <div class="third modules">
+                    <div class="bingtu"></div>
+                    <div class="menu-item" onclick="onAct(0)">
+                        <img src="./img/国内发展/中小学交互.png" style="" alt="">
+                        <div class="dots"></div><div>中小学教育</div>
+                    </div>
+                    <div class="menu-item" onclick="onAct(1)">
+                        <img src="./img/国内发展/高校交互.png" alt="">
+                        <div class="dots"></div><div>高校教育研究</div>
+                    </div>
+                    <div class="menu-item" onclick="onAct(2)">
+                        <img src="./img/国内发展/学会交互.png" alt="">
+                        <div class="dots"></div><div>学会相关</div>
+                    </div>
+                </div>
+            </div>
+            <!--  onmousedown="mousedown(this)" onmousemove="mousemove(this)" onmouseup="mouseup(this)" -->
+        </div>
+    </div>
+</body>
+</html>
+<script>    
+var scroll_2= document.getElementsByClassName('scroll_2')[0];
+var scrollRange = scroll_2.getBoundingClientRect();
+
+var Num = 0;
+function changeCard(event){
+    var clickedElement = event.target;
+    event.stopPropagation()
+    // 如果点击的不是 paper 元素，则不执行动画
+    if (!clickedElement.classList.contains('paper')) {
+        return;
+    }
+      // 将所有 paper 元素移除 animate 类
+    var papers = document.querySelectorAll('.paper');
+    papers.forEach(function(paper) {
+        paper.classList.remove('animate');
+    });
+
+        // 将点击的元素添加 animate 类，以触发动画效果
+    clickedElement.classList.add('animate');
+}
+
+function toGuoJi(){ 
+    window.location.href = "guojifazhang.html";
+}
+function onAct(index){
+
+    var item = document.getElementsByClassName('menu-item');
+    for(var i = 0;i<item.length;i++){
+        if(index == i){
+            item[i].children[0].style.cssText = `display:block;animation: chuxian 2s`
+            item[i].children[1].style.cssText = `background-color:#ffbb18`
+            item[i].children[2].style.cssText = `color:#ffbb18`
+        }else{
+            item[i].children[0].style.cssText = `display:none;animation: chuxian 2s`
+            item[i].children[1].style.cssText = `background-color:#7b480b`
+            item[i].children[2].style.cssText = `color:#7b480b`
+        }
+    }
+
+}
+function showtips(index){
+    var item = document.getElementsByClassName('item');
+    for(var i = 0;i<item.length;i++){
+        if(index == i){
+            item[i].children[0].style.cssText = `display:block;animation: chuxian 2s;`
+        }else{
+            item[i].children[0].style.cssText = `display:none;animation: chuxian 2s;`
+        }
+    }
+}
+// scroll_2.addEventListener('mousemove', function (e) {
+//     // 获取鼠标相对于容器的位置
+//     var mouseX = e.clientX - scrollRange.left;
+//     var mouseY = e.clientY - scrollRange.top;
+//     var currentSectionIndex = 0;
+//     var paper = document.getElementsByClassName('paper')
+//     if (mouseX >= scrollRange.offsetLeft &&
+//         mouseX <= (scrollRange.offsetLeft + scrollRange.offsetWidth) &&
+//         mouseY >= scrollRange.offsetTop &&
+//         mouseY <= (scrollRange.offsetTop + scrollRange.offsetHeight)) {
+        
+//         console.log('bbb')
+//         document.removeEventListener('wheel', handleWheel);
+//     } else {
+//         // document.addEventListener('wheel',function(event){
+//         //     var delta = Math.sign(event.deltaY);
+//         //     currentSectionIndex += delta;
+//         //     // 更新当前部分的索引
+//         //     currentSectionIndex += delta;
+
+//         //     // 限制索引范围在 0 到 sections.length - 1 之间
+//         //     currentSectionIndex = Math.max(0, Math.min(currentSectionIndex, paper.length - 1));
+
+//         //     for(var i =0;i<paper.length;i++){
+//         //         if (i === currentSectionIndex && i !=0) {
+//         //         // 为当前部分添加动画类
+//         //             paper[i].classList.add('animate');
+//         //         } else {
+//         //             // 移除其他部分的动画类
+//         //             paper[i].classList.remove('animate');
+//         //         }
+//         //     }
+ 
+//         // });
+//         console.log('aaa')
+//         document.addEventListener('wheel', handleWheel);
+//     }
+
+//     function handleWheel(event){
+//         var delta = Math.sign(event.deltaY);
+//         currentSectionIndex += delta;
+//         // 更新当前部分的索引
+//         currentSectionIndex += delta;
+
+//         // 限制索引范围在 0 到 sections.length - 1 之间
+//         currentSectionIndex = Math.max(0, Math.min(currentSectionIndex, paper.length - 1));
+
+//         if (currentSectionIndex === paper.length  && delta > 0) {
+//             // 如果到了末尾且向下滚动，将索引重置为0
+//             currentSectionIndex = 1;
+//         }
+ 
+//         for(var i =0;i<paper.length;i++){
+//             if (i === currentSectionIndex && i !=0) {
+//                 // 为当前部分添加动画类
+//                 paper[i].classList.add('animate');
+//             } else {
+//                 // 移除其他部分的动画类
+//                 paper[i].classList.remove('animate');
+//             }
+//         }
+//     }
+// });
+</script>

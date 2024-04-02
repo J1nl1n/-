@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/content.css">
+</head>
+<body>
+    <div class="container">
+        <div class="center">
+            <div class="chuanghua">
+                <div class="long"></div>
+            </div>
+        </div>
+        <div class="jbjs_wrap wrap" onclick="window.location.href ='jibenjieshao.html' ">
+            <img src="./img/content/jibenjieshaotips.png" alt="" class="jbjs tips">
+            <img src="./img/content/jibenjieshao.png" alt="" class="jbjs_img radius">
+        </div>
+        <div class="dfts_wrap wrap" onclick="window.location.href ='difangtese.html' ">
+            <img src="./img/content/difangtesetips.png" alt="" class="dfts tips">
+            <img src="./img/content/difangtese.png" alt="" class="dfts_img radius">
+        </div>
+        <div class="sjbq_wrap wrap" onclick="window.location.href ='shidaitese.html' ">
+            <img src="./img/content/shidai.png" alt="" class="sjbq_img radius">
+            <img src="./img/content/shidaibianqian.png" alt="" class="sjbq tips">
+        </div>
+        <div class="longwu_wrap wrap" onclick="window.location.href ='longwu.html' ">
+            <img src="./img/content/longwu.png" alt="" class="longwu_img radius">
+            <img src="./img/content/longwutips.png" alt="" class="longwu tips">
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var radius = document.getElementsByClassName('radius');
+
+    for(var i = 0;i<radius.length;i++){
+        radius[i].onmouseover = function(event){
+            var targetElement = event.target; 
+            targetElement.style.animation = 'xuanzhuan 2s'; 
+
+            targetElement.addEventListener('animationend', function() {
+                targetElement.style.animation = '';
+            }, { once: true });  // 使用 { once: true } 以确保事件只触发一次
+        }
+    }
+</script>

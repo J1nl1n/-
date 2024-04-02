@@ -1,0 +1,497 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+ 
+body,html{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.container1{
+    background-image: url(../img/jbdy_bg.png);
+    width: 1366px;
+    height: 768px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    
+}
+.content_bg{
+    background-image: url(../img/jbdy_content.png);
+    width: 1274px;
+    height: 668px;
+    transition: all ease .5s;
+    
+}
+.left_move{
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+} 
+.module{
+    display: none;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    color: #e7c361;
+    position: absolute;
+    right: 5%;
+    top: 0%;
+    z-index: 99;
+}
+.nav div{
+    writing-mode: vertical-rl; /* 从上至下竖排 */
+    text-orientation: upright; /* 保持正常显示 */
+    font-size: 24px;
+    width: 65px;
+    height: 216px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+.nav_item{ 
+    transition: all ease 0.5s;
+}
+.content_bg .wrap{
+    width: 100%;
+    height: 100%;
+    position: relative;;
+}
+.content_bg .text{
+    width: 600px;
+    flex-wrap: wrap;
+    font-size: 25px;
+    color: #832927;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5%;
+} 
+.title_img{ 
+    position: absolute;
+    left: 8%;
+    top: 10%;
+    transform: translateY(-50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+    color: #e7c361;
+    transition: all ease .5s;
+    z-index: 999;
+} 
+.qyfz{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.qyfz .bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.shangzi{
+    position: absolute;
+    left: -169px;
+    bottom: -234px;
+    background-image: url(../img/shanzi.png);
+    width: 630px;
+    height: 710px;
+    font-family: "hanyi";
+    font-size: 28px;
+    /* border: 1px solid #ccc; */
+    transform-origin: center;
+    transition: ease all 0.3s;
+    background-repeat: no-repeat;
+}
+.shangzi .wrap div{ 
+    offset-distance: 60%;
+    /* border: 1px solid #ccc; */
+    text-align: end;
+    position: absolute;
+    left: 0;
+    bottom: 40%;
+}  
+.shangzi .wrap{
+    position: relative;
+    width: 100%;
+    height: 100%; 
+    transition: all ease 0.5s;
+} 
+.qyfz .shanziwrap{
+    transform-origin: left bottom;
+    width: 100%;
+    height: 100%;
+}
+.fzqx{
+    position: absolute;
+    right: -119px;
+    bottom: 441px;
+    transform: rotate(59deg);
+    width: 578px;
+    height: 111px;
+    background-color: #ccc;
+    opacity: 0;
+    z-index: 999;
+    border: 1px solid #000;
+}
+.shangzi .wrap div:nth-child(1){
+    transform: translate(180px,-219px);
+}
+.shangzi .wrap div:nth-child(2){
+    transform: translate(256px,-204px);
+}
+.shangzi .wrap div:nth-child(3){
+    transform: translate(312px,-150px);
+}
+.shangzi .wrap div:nth-child(4){
+    transform: translate(295px,-79px);
+}
+.shangzi .wrap div:nth-child(5){
+    transform: translate(255px,-10px);
+}
+.shangzi .wrap div:nth-child(6){
+    transform: translate(207px,20px);
+} 
+@keyframes overturn{
+    0%{
+        transform: scaleX(-1);
+    }
+    100%{
+        transform: scaleX(1);
+    }
+}
+
+@keyframes topMove{
+    0%{ 
+        transform: translateY(-200px);
+    }
+    100%{ 
+        top: 0%;
+    }
+}
+@keyframes leftMove{
+    0%{
+        right: 100%;
+    }
+    100%{ 
+        right: 0;
+    }
+} 
+
+@keyframes titleMove{
+    0%{
+        transform: translateX(-200px);
+    }
+    100%{  
+        left: 8%;
+    }
+}
+
+@keyframes rotateShanZi{
+    0%{
+        transform: rotate(-180deg);
+    }
+    100%{  
+        transform: rotate(0);
+    }
+}
+
+@keyframes scaleBg{
+    0%{
+        transform: scale(0);
+        opacity: 0;
+    }
+    100%{  
+        opacity: 1;
+        transform: scale(100%);
+    }
+}
+.bg{
+    position: relative;
+}
+.note{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 50px;
+    height: 50px;
+}
+
+.note .wrap{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.note .tips{
+    position: absolute;
+    width: 417px;
+    height: 487px;
+    display: none;
+    transform: all ease 0.5s;
+}
+.djzb,.dragonwrap{
+    width: 100%;
+    height: 100%;
+}
+.dragonwrap{
+    position: relative;
+}
+.dragon{
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 1039px;
+    height: 589px;
+    transition: ease all 0.5s;
+}
+.dragonball{
+    position: absolute;
+    width: 269px;
+    height: 554px;
+    right: 0;
+    bottom: 0;
+}
+
+@keyframes dragonDance {
+    0%{
+        transform: translate(30PX,50PX);
+    }
+    50%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(-30PX,30PX);
+    }
+}
+
+.gan{
+    width: 145px;
+    height: 141px;
+    position: absolute;
+    z-index: 999;
+}
+
+.head{
+    right: 34%;
+    top: 20%;
+}
+.body{
+    right: 50%;
+    top: 35%;
+}
+.feet{
+    left: 8%;
+    bottom: 15%;
+}
+.body_img{
+    width: 533px;
+    height:531px;
+    left: 100px;
+    top: 200px;
+}
+.head_img{
+    width: 464px;
+    height:519px;
+    left: 430px;
+    top: 100px;
+}
+.feet_img{
+    width: 459px;
+    height:376px;
+    left: 100px;
+    top: 200px;
+}
+.dragonball_img{
+    width: 437px;
+    height:435px;
+    left: 800px;
+    top: 200px;
+}
+.dragon_tips{
+    z-index: 1000;
+    transform: scale(0.6);
+    position: absolute;
+} 
+.change_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px; 
+    position: absolute;
+    left: 10%;
+    top: 20%;
+    z-index: 999;
+}
+.change_btn .btn{
+    width: 121px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background-color: #b4002a;
+    color: #e7c361;
+    border: 1px solid #000;
+}
+.dress{
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/zhuangban.png);
+    position: relative;
+    transition: all ease 0.5s;
+}
+.dress .gan{
+    position: absolute;
+}
+.dress .maozi{
+    width: 53px;
+    height: 64px;
+    left: 450px;
+    top: 200px;
+}
+.dress .xiezi{
+    width: 72px;
+    height: 39px;
+    left: 1000px;
+    top: 690px;
+}
+.dress .yifu{
+    width: 56px;
+    height: 62px;
+    left: 500px;
+    top: 450px;
+}
+.dressTips{
+    position: absolute;
+}
+.yifu_img{
+    width: 422px;
+    height: 275px;
+    left: 500px;
+    top: 200px;
+}
+.xiezi_img{
+    width: 397px;
+    height: 277px;
+    left: 900px;
+    top: 400px;
+}
+.maozi_img{
+    width: 349px;
+    height: 275px;
+    left: 472px;
+    top: 200px;
+}
+
+.fanhui{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 0;
+    width: 80px;
+}
+.actionBg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: all ease 1s; 
+    display: none;
+}
+.chuxian{
+    display: block !important;
+}
+.xiaoshi{
+    animation: 'xiaoshi 1s';
+    display: none;
+} 
+@keyframes chuxian {
+    0%{
+        opacity: 0;
+        transform: scale(0);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes chuxian2 {
+    0%{
+        opacity: 0;
+        transform: scale(0);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+} 
+body > div > div.module.dzfj > div:nth-child(2) > img{
+    width: 260px;
+    height: 200px;
+}
+body > div > div.module.dzfj{
+    margin-top: 230px;
+} 
+.item {
+    background-color: #000;
+    position: absolute;
+}
+.item > img{ 
+    opacity: 0;
+}
+.ganName{
+    color: #ffd971;
+    position: absolute;
+    font-size: 25px;
+    font-family: "hanyi";
+}
+.ganName:nth-child(1){
+    left: 692px;
+    bottom: 579px;
+}
+.ganName:nth-child(2){
+    left: 477px;
+    bottom: 463px;
+}
+.ganName:nth-child(3){
+    left: 50px;
+    bottom: 223px;
+}
+.ganName:nth-child(4){
+    left: 1158px;
+    bottom: 460px;
+}
+.ganName:nth-child(5){
+    left: 50px;
+    bottom: 50px;
+}
+.zhixiang{
+    color: #ffd971;
+    position: absolute;
+    font-size: 25px;
+    font-family: "hanyi";
+}
+.zhixiang:nth-child(1){
+    left: 523px;
+    bottom: 534px;
+}
+.zhixiang:nth-child(2){
+    left: 508px;
+    bottom: 328px;
+}
+.zhixiang:nth-child(3){
+    left: 1092px;
+    bottom: 42px;
+}

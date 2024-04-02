@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/demo1.css">
+    <style>
+        @font-face {
+            font-family: "shanhun";
+            src: url('./file/默陌山魂田格手迹.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: "hanyi";
+            src: url('./file/汉仪尚巍手书简.TTF') format('truetype');
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <div class="title_img" style="font-family: shanhun;">
+            <img src="./img/fangkuai.png" alt="" style="margin-right: 10px;">
+            <div class="title"></div>
+        </div>
+        <div class="nav top_move">
+            <div class="nav_item" onclick="isActNav(0)">基本定义</div>
+            <div class="nav_item" onclick="isActNav(1)">起源发展</div>
+            <div class="nav_item" onclick="isActNav(2)">道具装扮</div>
+            <div class="nav_item" onclick="isActNav(3)">动作分解</div>
+        </div>
+        <div class="content_bg left_move module">
+            <div class="wrap">
+                <div class="text">
+                    龙舞也称“ 舞龙 ”民间又叫“耍龙”、“耍龙灯”或“ 舞龙灯 ”，是一种中国传统文化的舞蹈形式，在全国各地广泛分布。早在商代的甲骨文，已出现以数人集体祭龙求雨的文字。2006年经国务院批准列入第一批国家级非物质文化遗产名录。
+                </div>
+            </div>
+        </div>
+        <div class="module qyfz">
+            <div class="bg">
+                <div class="note1 note" onclick="showTips('note1')">
+                    <div class="wrap">
+                        <div class="note1_tips tips"></div>
+                    </div>
+                </div>
+                <div class="note2 note" onclick="showTips('note2')">
+                    <div class="wrap">
+                        <div class="note2_tips tips"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="shanziwrap">
+                <div class="shangzi">
+                    <div class="fzqx" alt="发展趋势" title="发展趋势" onclick="changBg()"></div>
+                    <div class="wrap">
+                        <div onclick="roateShangZi(0)" class="dynasty">商</div>
+                        <div onclick="roateShangZi(1)" class="dynasty">汉</div>
+                        <div onclick="roateShangZi(2)" class="dynasty">隋</div>
+                        <div onclick="roateShangZi(3)" class="dynasty">唐宋</div>
+                        <div onclick="roateShangZi(4)" class="dynasty">元明</div>
+                        <div onclick="roateShangZi(5)" class="dynasty">清</div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="module djzb">
+            <div class="change_btn">
+                <div class="daoju btn" onclick="changeModule('daoju')">道具</div>
+                <div class="zhuangban btn" onclick="changeModule('zhuangban')">装扮</div>
+            </div>
+            <div class="dress">
+                <div class="zhixiang">帽子</div>
+                <div class="zhixiang">衣服</div>
+                <div class="zhixiang">鞋子</div>
+                <img src="./img/maozi.png" alt="" class="gan maozi" onclick="dressShowCard('maozi')">
+                <img src="./img/xiezi.png" alt="" class="gan xiezi" onclick="dressShowCard('xiezi')">
+                <img src="./img/yifu.png" alt="" class="gan yifu" onclick="dressShowCard('yifu')">
+            </div>
+            <div class="dragonwrap">
+                <div class="ganName">龙头</div>
+                <div class="ganName">龙身</div>
+                <div class="ganName">龙杆</div>
+                <div class="ganName">龙珠</div> 
+                <img src="./img/gan.png" alt="" class="gan head" onclick="showCard('head')">
+                <img src="./img/gan.png" alt="" class="gan body" onclick="showCard('body')">
+                <img src="./img/gan.png" alt="" class="gan feet" onclick="showCard('feet')">
+                <img src="./img/dragon.png" alt="" class="dragon">
+                <img src="./img/ball.png" alt="" class="dragonball" onclick="showCard('dragonball')">
+            </div>
+        </div>
+        <div class="module dzfj">
+            <div class="actionBg" onclick="hiddenAct()"></div>
+            <div style="width: 1240px;height: 510px;display: flex;flex-wrap: wrap;justify-content: space-between;">
+                <img src="./img/螺旋跳龙.gif" alt="" onclick="showAction(0)">
+                <img src="./img/直躺舞龙.gif" alt="" onclick="showAction(1)">
+                <img src="./img/龙出宫.gif" alt="" onclick="showAction(2)">
+                <img src="./img/飞龙造型.gif" alt="" onclick="showAction(3)">
+                <img src="./img/八字舞龙.gif" alt="" onclick="showAction(4)">
+                <img src="./img/龙腾九霄造型.gif" alt="" onclick="showAction(5)">
+                <img src="./img/快速游龙.gif" alt="" onclick="showAction(6)">
+                <img src="./img/钻石舞龙.gif" alt="" onclick="showAction(7)">
+            </div>
+        </div>
+        <img src="./img/组 1.png" class="fanhui" onclick="window.location.href ='contents.html' "/>
+    </div>
+</body>
+</html>
+<script>
+    var module = document.getElementsByClassName('module');
+    var content_bg = document.getElementsByClassName('content_bg')[0];
+    var navlist = document.getElementsByClassName('nav_item'); 
+    var nav = document.getElementsByClassName('nav')[0]; 
+    var title_img = document.getElementsByClassName('title_img')[0];
+    //标题
+    var title = document.getElementsByClassName('title')[0];
+    //朝代
+    var dynasty =  document.getElementsByClassName('dynasty');
+    //扇子dom
+    var shanziwrap =  document.getElementsByClassName('shanziwrap')[0];
+    var shangzi =  document.getElementsByClassName('shangzi')[0];
+    //朝代背景
+    var bg = document.getElementsByClassName('bg')[0]; 
+
+    var note = document.getElementsByClassName('note');
+    var tips = document.getElementsByClassName('tips');
+
+    var dragon = document.getElementsByClassName('dragon')[0];
+    var dragonball = document.getElementsByClassName('dragonball')[0];
+
+    const navName =['基本定义','起源发展','道具装扮','动作分解'];
+    const chaodaiBg = [
+        {src:"./img/shang.png"},
+        {src:"./img/han.png"},
+        {src:"./img/sui.png"},
+        {src:"./img/tanson.png"},
+        {src:"./img/yuanming.png"},
+        {src:"./img/qing.png"},
+    ];
+    const actionList = [
+        {src:"./img/螺旋舞龙交互.gif"},
+        {src:"./img/直躺舞龙交互.gif"},
+        {src:"./img/龙出宫交互.gif"},
+        {src:"./img/飞龙交互.gif"},
+        {src:"./img/八字舞龙交互.gif"},
+        {src:"./img/龙腾九宵交互.gif"},
+        {src:"./img/快速游龙交互.gif"},
+        {src:"./img/钻石舞龙交互.gif"},
+    ]
+    var actionBg = document.getElementsByClassName('actionBg')[0];
+    function showAction(index){ 
+        for(var i =0;i<actionList.length;i++){
+            if(i == index){
+                actionBg.style.backgroundImage = `url(${actionList[i].src})`
+                actionBg.classList.add("chuxian");
+                actionBg.style.animation = 'scaleBg 1s';
+            }
+        }
+    }
+    function hiddenAct(){ 
+        actionBg.classList.remove("chuxian");
+    }
+
+    var isAct = 0;
+    var dressNodeGet = false;
+    function dressShowCard(name){
+        var parent = document.getElementsByClassName('dress')[0];
+        var dom = document.getElementsByClassName(name)[0];
+        var dressTips = document.getElementsByClassName('dressTips')[0];
+  
+        if (!dressNodeGet) {
+            var children = document.createElement("div");
+            
+            const newDom = parent.insertBefore(children, dom.children[0]);
+            switch(name) {
+                case 'maozi': 
+                    newDom.classList.add('maozi_img','dressTips');
+                    newDom.style.backgroundImage = `url(./img/${name}tips.png)`;
+
+                break;
+                case 'xiezi':
+                    newDom.classList.add('xiezi_img','dressTips');
+                    newDom.style.backgroundImage = `url(./img/${name}tips.png)`;
+                break;
+                case 'yifu':
+                    newDom.classList.add('yifu_img','dressTips');
+                    newDom.style.backgroundImage = `url(./img/${name}tips.png)`;
+                break;
+            }
+   
+            dressNodeGet = true;
+        }else{
+            var tips = parent.children;
+            for(var i =0;i<tips.length;i++){
+                var classlist = tips[i].classList;
+                for(var j =0;j<classlist.length;j++){
+                    if(classlist[j] == 'dressTips'){
+                        console.log(tips[i]);
+                        console.log('name: '+name);
+                        
+                        switch(name) {
+                            case 'maozi':
+                                dressTips.className = 'maozi_img dressTips';
+                                dressTips.style.backgroundImage = `url(./img/${name}tips.png)`;
+                            break;
+                            case 'xiezi':
+                                dressTips.className = 'xiezi_img dressTips';
+                                dressTips.style.backgroundImage = `url(./img/${name}tips.png)`;
+                            break;
+                            case 'yifu':
+                                dressTips.className = 'yifu_img dressTips';
+                                dressTips.style.backgroundImage = `url(./img/${name}tips.png)`;
+                            break;
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    function changeModule(name){
+        var dragonwrap = document.getElementsByClassName('dragonwrap')[0];
+        var dress = document.getElementsByClassName('dress')[0];
+        var btndom = document.getElementsByClassName(name)[0];
+        
+        var parent = document.getElementsByClassName('dress')[0]; 
+        setTimeout(() => {
+            parent.style.animation = 'scaleBg 1s';
+        }, 100);
+
+        if(name == 'daoju'){
+            dragonwrap.style.display = 'block';
+            dress.style.display = 'none';
+            
+            document.getElementsByClassName('daoju')[0].style.color = '#b4002a';
+            document.getElementsByClassName('daoju')[0].style.backgroundColor = '#e7c361';
+            document.getElementsByClassName('daoju')[0].style.boxShadow = '0 0 30px #e7c361';
+            
+            document.getElementsByClassName('zhuangban')[0].style.color = '#e7c361';
+            document.getElementsByClassName('zhuangban')[0].style.backgroundColor = '#b4002a';
+            document.getElementsByClassName('zhuangban')[0].style.boxShadow = '';
+        }else{
+            dress.style.display = 'block';
+            dragonwrap.style.display = 'none';
+             
+            document.getElementsByClassName('daoju')[0].style.color = '#e7c361';
+            document.getElementsByClassName('daoju')[0].style.backgroundColor = '#b4002a';
+            document.getElementsByClassName('daoju')[0].style.boxShadow = '';
+            
+            document.getElementsByClassName('zhuangban')[0].style.color = '#b4002a';
+            document.getElementsByClassName('zhuangban')[0].style.backgroundColor = '#e7c361';
+            
+            document.getElementsByClassName('zhuangban')[0].style.boxShadow = '0 0 30px #e7c361';
+        }
+    }
+    function isActNav(e){
+         
+        for(var i=0;i<navlist.length;i++){
+            if(e == i){
+                
+                toggleNav(i);
+
+                navlist[i].style.color = '#832927';
+                navlist[i].style.backgroundImage = "url('./img/nav_bg.png')"; 
+                navlist[i].style.animation = "overturn 1s";  
+                
+                title_img.style.animation = "leftMove"
+
+                actionBg.style.animation = 'chuxian 1s';
+                
+                dynasty[0].style.color = '#a12734';
+
+
+                var imgItem = document.querySelectorAll("body > div > div.module.dzfj > div > img");
+                for(var x = 0;x<imgItem.length;x++){
+                    imgItem[x].style.animation = `chuxian2 3s`;
+                }
+
+                for(var j=0;j<navlist.length;j++){
+                    if(j != i ){
+                        navlist[j].style.backgroundImage = "url('')";
+                        navlist[j].style.color = '#e7c361'; 
+                        navlist[j].style.animation = "";  
+ 
+                    }
+                }
+            }else{
+                var imgItem = document.querySelectorAll("body > div > div.module.dzfj > div > img");
+                for(var x = 0;x<imgItem.length;x++){
+                    imgItem[x].style.animation = ` `;
+                }
+            }
+        }
+    }
+
+    function toggleNav(index){
+       // isAct = i;
+       if(index == 1){
+            shanziwrap.style.animation = "rotateShanZi 2s";
+            leftMove();
+        } 
+        for(var i=0;i<module.length;i++){
+            if(i == index){ 
+                title.innerText = navName[i];
+                module[i].style.display = 'block'
+                if(index == 2){
+                    console.log( dragon.style.animation);
+                    dragon.style.animation = 'dragonDance 1s';
+                    dragonball.style.animation = 'dragonDance 1s';
+                }
+            }else{
+                dragon.style.animation = '';
+                dragonball.style.animation = '';
+                module[i].style.display = 'none'
+            }
+        }
+    }
+    function topMove(){ 
+        nav.style.animation = "topMove 1s";
+
+    }
+    function leftMove(){  
+        content_bg.style.animation = "leftMove 1s";
+        title_img.style.animation = "titleMove 1s";
+    } 
+    function changBg(){
+        bg.style.backgroundImage = 'url(./img/fzqs.png)';
+    } 
+    function roateShangZi(index){
+        bg.style.animation = 'none';
+        console.log(index);
+        setTimeout(function() {
+            for(var i=0;i<dynasty.length;i++){
+                if(index == i){
+                    dynasty[index].style.color = '#a12734';
+                    // shangzi.style.transform = 'rotate(' + index * (-15) + 'deg)';
+                    bg.style.backgroundImage = `url(${ chaodaiBg[index].src })`;
+                    bg.style.animation = 'scaleBg 1s';
+                     
+
+                    if(index == 1 || index == 2){
+                        if(index == 1){
+                            note[0].style.width = '542px';
+                            note[0].style.height = '231px';
+                            note[0].style.left = '60%';
+                            note[0].style.top = '200px';
+
+                            note[1].style.width = '542px';
+                            note[1].style.height = '231px';
+                            note[1].style.left = '40%';
+                            note[1].style.top = '60%';
+                            
+                            tips[0].style.width = '491px';
+                            tips[0].style.height = '291px';
+                            
+                            tips[0].style.backgroundImage = 'url(./img/tips_hen.png)';
+                            tips[0].style.transform = 'translate(-300px,-100px)';
+
+                               
+                            tips[1].style.width = '482px';
+                            tips[1].style.height = '492px';
+                            
+                            tips[1].style.backgroundImage = 'url(./img/tips.png)';
+                            tips[1].style.transform = 'translate(-300px,-300px)';
+                            
+                        }
+                        if(index==2){ 
+                         
+                            tips[0].style.width = '414px';
+                            tips[0].style.height = '487px';
+                            note[0].style.left = '40%';
+                            note[0].style.top = '250px';
+
+                            tips[0].style.transform = 'translate(270px,10px)';
+                            tips[0].style.backgroundImage = 'url(./img/suitips.png)';
+ 
+                        }
+
+                    }else{
+                        for(var j=0;j<note.length;j++){
+                            note[j].style.opacity = '1';
+                        }
+                    }
+                }else{
+                    dynasty[i].style.color = '#000000';
+                }
+            }
+        }, 0);
+         
+    } 
+    var nodeGenerated = false;
+    function showCard(name){
+        console.log('aaa')
+        var parent = document.getElementsByClassName('dragonwrap')[0];
+        var dom = document.getElementsByClassName(name)[0];
+        var dragonTips = document.getElementsByClassName('dragon_tips')[0];
+        if (!nodeGenerated) {
+            var children = document.createElement("div");
+            
+            const newDom = parent.insertBefore(children, dom.children[0]);
+            switch(name) {
+                case 'body': 
+                    newDom.classList.add('body_img','dragon_tips');
+                    newDom.style.backgroundImage = `url(./img/${name}.png)`;
+
+                break;
+                case 'head':
+                    newDom.classList.add('head_img','dragon_tips');
+                    newDom.style.backgroundImage = `url(./img/${name}.png)`;
+                break;
+                case 'feet':
+                    newDom.classList.add('feet_img','dragon_tips');
+                    newDom.style.backgroundImage = `url(./img/${name}.png)`;
+                break;
+                case 'dragonball':
+                    newDom.classList.add('dragonball_img','dragon_tips');
+                    newDom.style.backgroundImage = `url(./img/${name}.png)`;
+                break;
+            }
+   
+            nodeGenerated = true;
+        }else{
+            var tips = parent.children;
+            for(var i =0;i<tips.length;i++){
+                var classlist = tips[i].classList;
+                for(var j =0;j<classlist.length;j++){
+                    if(classlist[j] == 'dragon_tips'){
+                        console.log(tips[i]);
+                        console.log('name: '+name);
+                        
+                        console.log(dragonTips);
+                        switch(name) {
+                            case 'body': 
+                                dragonTips.className = 'body_img dragon_tips';
+                                dragonTips.style.backgroundImage = `url(./img/${name}.png)`;
+                            break;
+                            case 'head':
+                                dragonTips.className = 'head_img dragon_tips';
+                                dragonTips.style.backgroundImage = `url(./img/${name}.png)`;
+                            break;
+                            case 'feet':
+                                dragonTips.className = 'feet_img dragon_tips';
+                                dragonTips.style.backgroundImage = `url(./img/${name}.png)`;
+                            break;
+                            case 'dragonball':
+                                dragonTips.className = 'dragonball_img dragon_tips';
+                                console.log(name);
+                                dragonTips.style.backgroundImage = `url(./img/${name}.png)`;
+                            break;
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    function showTips(dom){ 
+        var div = document.getElementsByClassName(dom)[0]; 
+        var tips_img = div.children[0].children[0]; 
+        if (tips_img.style.display === 'block') {
+            tips_img.style.display = 'none';
+        } else {
+            tips_img.style.display = 'block';
+        }
+    }
+    window.onload = function(){ 
+        title.innerText = navName[0];
+        module[0].style.display = 'block';
+        navlist[0].style.backgroundImage = "url('./img/nav_bg.png')"; 
+
+        navlist[0].style.color = '#832927';
+
+        bg.style.backgroundImage = `url(${ chaodaiBg[0].src })`;
+        dynasty[0].style.color = '#a12734';
+
+        topMove();
+        leftMove();
+ 
+    }
+ 
+</script>

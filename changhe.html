@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/changhe.css">
+</head>
+<body>
+    <div class="container">   
+        <div class="nav-list">
+            <div class="wrap">
+                <div class="nav-item">
+                    <img src="./img/长河/年轮.png" alt="">
+                    <img src="./img/长河/第一个图标点击交互.png" class="nav-menu" alt="">
+                </div>
+                <div class="nav-item">
+                    <img src="./img/长河/人.png" alt="">
+                    <img src="./img/长河/第二个图标点击交互.png" class="nav-menu" alt="">
+                </div>
+                <div class="nav-item">
+                    <img src="./img/长河/草龙.png" alt="">
+                    <img src="./img/长河/第三个图标点击交互.png" class="nav-menu" alt="">
+                </div>
+                <div class="nav-item">
+                    <img src="./img/长河/娱乐.png" alt="">
+                    <img src="./img/长河/第四个图标点击交互.png" class="nav-menu" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="bg" >
+            <div class="item">
+                <img src="./img/长河/新建文件夹/1tips.png"alt="" class="tips"> 
+                <img src="./img/长河/新建文件夹/1.png" onclick="showTips('0')" alt=""> 
+            </div>
+            <div class="item">
+                <img src="./img/长河/新建文件夹/2tips.png"alt="" class="tips"> 
+                <img src="./img/长河/新建文件夹/2.png" onclick="showTips('1')" alt=""> 
+            </div>
+            <div class="item">
+                <img src="./img/长河/新建文件夹/3tips.png"alt="" class="tips"> 
+                <img src="./img/长河/新建文件夹/3.png" onclick="showTips('2')" alt=""> 
+            </div>
+            <div class="item">
+                <img src="./img/长河/新建文件夹/4tips.png"alt="" class="tips"> 
+                <img src="./img/长河/新建文件夹/4.png" onclick="showTips('3')" alt=""> 
+            </div>
+            <div class="item">
+                <img src="./img/长河/新建文件夹/5tips.png"alt="" class="tips"> 
+                <img src="./img/长河/新建文件夹/5.png" onclick="showTips('4')" alt=""> 
+            </div>
+            <div class="item">
+                <img src="./img/长河/新建文件夹/6tips.png"alt="" class="tips"> 
+                <img src="./img/长河/新建文件夹/6.png" onclick="showTips('5')" alt=""> 
+            </div>
+            <div class="item">
+                <img src="./img/长河/新建文件夹/7tips.png"alt="" class="tips"> 
+                <img src="./img/长河/新建文件夹/7.png" onclick="showTips('6')" alt=""> 
+            </div>
+            <div class="item">
+                <img src="./img/长河/新建文件夹/8tips.png"alt="" class="tips"> 
+                <img src="./img/长河/新建文件夹/8.png" onclick="showTips('7')" alt=""> 
+            </div>
+            <div class="item">
+                <img src="./img/长河/新建文件夹/9tips.png"alt="" class="tips"> 
+                <img src="./img/长河/新建文件夹/9.png" onclick="showTips('8')" alt=""> 
+            </div>
+            <div class="item">
+                <img src="./img/长河/新建文件夹/10tips.png"alt="" class="tips"> 
+                <img src="./img/长河/新建文件夹/10.png" onclick="showTips('9')" alt=""> 
+            </div>
+            <div class="item">
+                <img src="./img/长河/新建文件夹/11tips.png"alt="" class="tips"> 
+                <img src="./img/长河/新建文件夹/11.png" onclick="showTips('10')" alt=""> 
+            </div>
+        </div> 
+        <img src="./img/组 1.png" class="fanhui" onclick="window.location.href ='contents.html' "/>
+    </div>
+</body>
+</html>
+<script>  
+var bg = document.querySelector('.bg');
+
+var distance = 0
+// 监听鼠标滚动事件
+
+// 获取滚动前的位置 
+window.addEventListener('wheel', function(event) {  
+
+    var deltaY = event.deltaY;
+
+    if(deltaY > 0 ){
+
+        bg.style.cssText = `transform: translateY(${distance -= 100}px);`
+    }else{
+        bg.style.cssText = `transform: translateY(${distance += 100}px);`
+    } 
+
+ 
+});
+
+function showTips(index){
+var item = document.getElementsByClassName('item');
+    for(var i = 0;i<item.length;i++){
+        if(index == i){
+            item[i].children[0].style.display = 'block';
+            item[i].children[0].style.animation = 'opacity 1s';
+        }else{
+            item[i].children[0].style.display = 'none'; 
+        }
+    }
+}
+var menuIcon = document.querySelectorAll("body > div > div.nav-list > div > div > img:nth-child(1)")
+for(var i = 0;i<menuIcon.length;i++){
+    menuIcon[i].onmouseover = function(event){
+        var thisDOM = event.target;
+        thisDOM.parentNode.children[1].style.display = 'block'
+    }
+} 
+for(var i = 0;i<menuIcon.length;i++){
+    menuIcon[i].onmouseout = function(event){
+        var thisDOM = event.target;
+        thisDOM.parentNode.children[1].style.display = 'none'
+    }
+}
+</script>

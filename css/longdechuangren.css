@@ -1,0 +1,208 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 1366px;
+    height: 768px;
+    background-image: url(../img/diwen.png);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.detail{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    display: none;
+}
+.scroll-x{
+    height: 100%; 
+    width: 100%;
+    overflow-x: scroll;
+}
+.content_wrap{
+    display: flex;
+    width: calc(1366*3px);
+    height: 100%;
+} 
+.content{
+    width: 1366px;
+    height: 100%; 
+    position: relative;
+}
+.img{
+    position: absolute;
+    z-index: 99;
+}
+.img1{
+    left: 6%;
+    top: 26%;
+}
+.img2{
+    left: 39%;
+    top: 23%;
+}
+.img3{
+    left: 9%;
+    top: 54%;
+}
+.img4{
+    left: 38%;
+    top: 57%;
+}
+.img5{
+    left: 57%;
+    top: 12%;
+}
+.img6{
+    left: 63%;
+    top: 36%;
+}
+.img7{
+    left: 50%;
+    top: 67%;
+    transform: scale(0.5);
+}
+.img8{
+    left: 77%;
+    top: 36%;
+}
+.img9{
+    left: 78%;
+    top: 6%;
+}
+.img10{
+    left: 20%;
+    top: 30%;
+}
+.opc1{
+    left: 81%;
+    top: 70%;
+}
+.opc2{
+    left: 41%;
+    top: 30%;
+}
+.opc3{
+    left: 27%;
+    top: 68%;
+}
+.opc4{
+    left: 8%;
+    top: 28%;
+    transform: scale(0.8);
+}
+.opc5{
+    left: 29%;
+    top: 20%;
+}
+.opc6{
+    left: 28%;
+    top: 29%;
+    transform: scale(0.5);
+}
+.opc7{
+    left: 50%;
+    top: 20%;
+    transform: scale(0.3);
+}
+.opc8{
+    left: 63%;
+    top: 53%;
+}
+.opc9{
+    left: 61%;
+    top: 9%;
+}
+.opc10{
+    left: 50%;
+    top: 20%;
+}
+.opc11{
+    left: -7%;
+    top: 60%;
+}
+.opc12{
+    left: 46%;
+    top: 45%;
+}
+.opc13{
+    left: 82%;
+    top: 54%;
+}
+.opc14{
+    left: 86%;
+    top: 86%;
+}
+.opc{
+    opacity: 0.3;
+    z-index: 0;
+    transform: scale(0.5);
+}
+.ahc{
+    animation: opacity 2s;
+    transition: ease all 0.5s;
+}
+ 
+@keyframes opacity {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes hidden {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes scale {
+    0%{ 
+        opacity: 0;
+        transform: scale(0);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes scale2 {
+    0%{ 
+        opacity: 1;
+        transform: scale(1);
+    }
+    100%{
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+    display:none;
+}
+
+.fanhui{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 0;
+    width: 80px;
+}

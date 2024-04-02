@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/guojifazhang.css">
+</head>
+<body>
+    <div class="container" onclick="window.location.href = 'longdechuanren.html' ">
+        <div class="btn_wrap">
+            <div class="tips"></div>
+            <div class="tips1996 1996" onclick="showCard('tips1996',event)"></div>
+            <div class="tips2001 2001" onclick="showCard('tips2001',event)"></div>
+            <div class="tips2006 2006" onclick="showCard('tips2006',event)"></div>
+        </div>  
+    </div>
+</body>
+</html>
+<script>
+function showCard(name,event){
+    event.stopPropagation();
+    var dom = document.getElementsByClassName(name)[0]; 
+    dom.style.backgroundImage = `url(./img/国际发展/${dom.classList[1]}act.png)`;
+    
+    var tips = document.getElementsByClassName('tips')[0];
+    var img_name= dom.classList[1]; //string    
+    switch(name){
+        case 'tips1996':
+            tips.style.width = '536px';
+            tips.style.height = '531px';
+            tips.style.left = '100px';
+            tips.style.top = '20px';
+        break;
+        case 'tips2001':
+            tips.style.width = '592px';
+            tips.style.height = '537px';
+            tips.style.left = '380px';
+            tips.style.top = '-20px';
+        break;
+        case 'tips2006':
+            tips.style.width = '572px';
+            tips.style.height = '536px';
+            tips.style.left = '800px';
+            tips.style.top = '-50px';
+        break;
+    }
+    
+    tips.style.backgroundImage = `url(./img/国际发展/${img_name}tips.png)`;  
+    tips.style.animation = 'show 1s';
+    tips.style.transition = 'ease all 0.1s';
+
+    var domlist = dom.parentElement.childNodes;
+    for(var i=0;i<domlist.length;i++){
+        var childClassList = domlist[i].classList;
+        if(childClassList != undefined){
+            if(name != childClassList[0]){
+                var brodom = document.getElementsByClassName(childClassList[0])[0];
+                var broname = document.getElementsByClassName(childClassList[0])[0].classList[1];
+                
+
+                if(broname != undefined)
+                brodom.style.backgroundImage = `url(./img/国际发展/${broname}.png)`
+            }
+        }
+    }
+}
+</script>

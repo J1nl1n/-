@@ -1,0 +1,262 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 1366px;
+    height: 768px;
+    background-image: url(../img/国内发展/diwen.png);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative; 
+    overflow: hidden;
+} 
+.wrap1{
+    position: absolute;
+    left: 70px;
+    top: 230px;
+}
+.wrap3{
+    position: absolute;
+    left: 939px;
+    top: 74px;
+}
+.scorll_1{
+    width: 389px;
+    height: 538px;
+}
+.scroll_3{
+    width: 402px;
+    height: 695px;
+}
+.scorll_1,.scroll_3{
+    overflow-y: scroll;
+}
+.frist{
+    width: 391px;
+    height: 1323px;
+    background-image: url(../img/国内发展/法律.png);
+}
+.third{
+    width: 401px;
+    height: 1229px;
+    background-image: url(../img/国内发展/学术.png);
+}
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent !important;
+    display:none;
+}
+.wrap2{
+    position: absolute;
+    left: 500px;
+    top: 155px;
+} 
+.second{
+    width: 393px;
+    height: 614px;
+    position: relative; 
+}
+.yi{
+    width: 391px;
+    height: 614px;
+    transform: translateX(-50%);
+    background-image: url(../img/国内发展/赛事.png);
+}
+.er{
+    width: 372px;
+    height: 639px;
+    background-image: url(../img/国内发展/最后面一张.png);
+}
+.san{
+    width: 375px;
+    height: 570px;
+    background-image: url(../img/国内发展/中间那张.png);
+}
+.si{
+    width: 376px;
+    height: 479px;
+    background-image: url(../img/国内发展/最前面一张.png);
+}
+.paper{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+} 
+.er,.san,.si{
+    transform: translateY(340px) translateX(-50%);
+}
+.animate{
+    animation: move 2s;
+    transition: all ease 1s;
+}
+@keyframes move {
+    0%{
+        
+    }
+    100%{
+        transform: translateY(-90px) translateX(-50%);
+    }
+}
+@keyframes chuxian {
+    0%{
+        transform: scale(0);
+        opacity: 0;        
+    }
+    100%{
+        transform: scale(0.4);
+        opacity: 1;
+    }
+}
+@keyframes chuxian2 {
+    0%{
+        transform: scale(0);
+        opacity: 0;        
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.item{
+    /* background-color: #000000; */
+    position: absolute;
+    width: 209px;
+    height: 206px;
+    border-radius: 200px;
+    transition: all ease 0.5s;
+
+}
+.item > img{
+    position: absolute;
+    left: 50%;
+    display: none;
+    transform: scale(0.4);
+    border-radius: 20px;
+    overflow: hidden;
+}
+body > div > div.wrap1 > div > div > div.item1.item > img{
+    left: -62% !important
+}
+body > div > div.wrap1 > div > div > div.item2.item > img{
+    left: -62% !important
+}
+body > div > div.wrap1 > div > div > div.item3.item > img{
+    left: -62% !important
+}
+body > div > div.wrap1 > div > div > div.item4.item > img{
+    left: -84% !important;
+}
+body > div > div.wrap1 > div > div > div.item5.item > img{
+    left: -84% !important;
+    top: -93px;
+}
+.item1{
+    width: 209px;
+    height: 206px;
+    left: 31px;
+    top: 258px;
+}
+.item2{
+    left: 148px;
+    top: 445px;
+}
+.item3{
+    left: 31px;
+    top: 647px;
+}
+.item4{
+    left: 170px;
+    top: 837px;
+}
+.item5{
+    left: 33px;
+    top: 1022px;
+}
+.frist {
+    position: relative;
+}
+.menu-item{
+    display: flex;
+    align-items: center;
+    font-size: 36px;
+    margin-top: 54px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #7b480b;
+}
+.menu-item div{
+    text-wrap: nowrap;
+}
+
+body > div > div.wrap3 > div > div > div:nth-child(2){
+    top: 583px;
+    left: 50%;
+}
+body > div > div.wrap3 > div > div > div:nth-child(3){
+    top: 656px;
+    left: 55%;
+}
+body > div > div.wrap3 > div > div > div:nth-child(4){
+    top: 731px;
+    left: 46%;
+
+}
+.third{
+    position: relative;
+}
+.dots{
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    background-color: #7b480b;
+    margin-right: 26px;
+}
+ 
+.menu-item > img{
+    display: none;
+    position: absolute;
+    z-index: 999;
+    transform: scale(0.5);
+    background-size: cover;
+    transition: all ease 11s;
+    z-index: 999;
+    left: 50%;
+    
+    border-radius: 20px;
+    overflow: hidden;
+}
+body > div > div.wrap3 > div > div > div:nth-child(2) > img{
+    top: -230px !important;
+    left: -67%;
+
+}
+body > div > div.wrap3 > div > div > div:nth-child(3) > img{
+    top: -400px !important;
+    transform: scale(0.4) !important;
+    left: -180px !important;
+}
+.bingtu{ 
+    position: absolute;
+    background-image: url(../img/国内发展/饼图.gif);
+    width: 468px;
+    height: 298px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 300px;
+}
+body > div > div.wrap3 > div > div > div:nth-child(4) > img{
+    left: -180px;
+    top: -80px;
+}

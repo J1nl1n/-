@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>龙舞</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .game {
+            position: relative;
+            width: 1366px;
+            height: 768px;
+            border: 1px solid #000;
+            margin: 50px auto 0;
+            overflow: hidden;
+        }
+
+        .sky {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2732px;
+            height: 250px;
+            background: url(../游戏图片资料/背景.png);
+        }
+
+        .cloud {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 2732px;
+            height: 220px;
+            background: url(../游戏图片资料/新云.png);
+        }
+
+
+        .land {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 5464px;
+            height: 518px;
+            background: url(../游戏图片资料/土地1.png);
+        }
+
+        .mountain {
+            position: absolute;
+            left: 0px;
+            bottom: -130px;
+            width: 3690px;
+            height: 741px;
+            background: url(../游戏图片资料/山终.png);
+        }
+
+        .dragon {
+            position: absolute;
+            left: 250px;
+            top: 200px;
+            width: 581px;
+            height: 123px;
+            background: url(../游戏图片资料/龙.png);
+        }
+
+
+        .imageContainer {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .image {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background-size: cover;
+
+        }
+
+
+        .start {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 130px;
+            height: 60px;
+            background: rgba(255, 200, 21, 0.753);
+            color: #fff;
+            font-size: 25px;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        /*地面动画*/
+        #donghua {
+            animation: move 18s infinite linear;
+        }
+
+        @keyframes move {
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: -2732px;
+            }
+        }
+
+
+        /*云朵动画*/
+        #yunpiao {
+            animation: move 300s infinite linear;
+        }
+
+        @keyframes yunpiao {
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: -1366px;
+            }
+        }
+
+        /*山动画*/
+        #shanpiao {
+            animation: move 400s infinite linear;
+        }
+
+        @keyframes shanpiao {
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: -1366px;
+            }
+        }
+
+
+
+        .zhadan {
+            width: 183px;
+            height: 217px;
+            background: url(../游戏图片资料/炸弹.png);
+            position: absolute;
+            /*top: 250;/*改变的*/
+            right: -183px;
+            /* 初始时，炸弹在右侧外 */
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div class="game">
+        <div class="sky"></div>
+        <div class="land"></div>
+        <div class="cloud"></div>
+        <div class="mountain"></div>
+        <div class="start">START</div>
+        <div class="dragon"></div>
+        <div class="zhadan"></div>
+        <div id="imageContainer">
+
+        </div>
+
+
+        <script>
+            // 定义变量
+            const wrap = document.querySelector(".game");
+            sky = document.querySelector(".sky");
+            land = document.querySelector(".land");
+            cloud = document.querySelector(".cloud");
+            dragon = document.querySelector(".dragon");
+            mountain = document.querySelector(".mountain");
+            start = document.querySelector(".start");
+            imageContainer = document.getElementById('imageContainer');
+            imagesArray = [
+                '../游戏图片资料/龙1.jpg',
+                '../游戏图片资料/龙2.jpg',
+                '../游戏图片资料/龙3.jpg',
+                '../游戏图片资料/龙4.jpg',
+                '../游戏图片资料/龙5.jpg',
+                '../游戏图片资料/龙6.jpg',
+                '../游戏图片资料/龙7.jpg',
+                '../游戏图片资料/龙8.jpg',
+                '../游戏图片资料/龙9.jpg'
+            ];
+
+
+
+            var speed = 3; // 龙下降速度
+            var jump = -40; // 龙跳跃高度
+            var zhadans = []
+            var newzhadans = []
+            var creatzhadan = null
+
+
+            var iscollision = null
+            var iscollisiontime = null
+            var ishittime = null
+            var creattime = null//创建管道计时器
+            var dragondown = null //龙自由落体计时器
+
+            let currentIndex = 0;
+            let collisionIntervalId = null;
+            let intervals = [];
+
+
+
+            //注册开始点击事件
+            start.addEventListener('click', gamestart)
+
+            function gamestart() {
+                //游戏开始后隐藏按钮
+                start.style.display = "none";
+                //陆地移动 
+                land.id = "donghua";
+                //云动画
+                cloud.id = "yunpiao";
+                //山动画
+                mountain.id = "shanpiao";
+                //龙自由落体
+                dragondown = setInterval(() => {
+                    dragon.style.top = dragon.offsetTop + speed + "px";
+                }, 40);
+                //让龙跳动
+                dragon.style.top = dragon.offsetTop + jump + "px";
+
+                ;
+                // 按空格键龙飞
+                document.addEventListener('keydown', function (e) {
+                    if (e.key == " ") {
+                        dragon.style.top = (dragon.offsetTop + jump) + "px";
+                    }
+                });
+
+
+
+
+
+
+
+                function addImage() {
+                    if (currentIndex >= imagesArray.length) {
+                        currentIndex = 0;
+                    }
+
+                    const img = new Image();
+                    img.src = imagesArray[currentIndex++];
+                    img.style.position = 'absolute';
+                    img.style.width = "180px";
+                    img.style.height = "180px";
+                    img.style.left = '1366px';
+
+                    // 设置随机的 top 值，介于 100px 和 500px 之间
+                    img.style.top = `${Math.floor(Math.random() * (500 - 100 + 1)) + 100}px`;
+
+                    imageContainer.appendChild(img);
+
+
+                    img.onload = () => {
+                        const dragon = document.querySelector('.dragon');
+                        let left = img.offsetLeft;
+
+                        // 开始移动图片
+                        const step = 5; // 改变移动速度
+                        img.movetime = setInterval(() => {
+                            if (left < -img.width) {
+                                clearInterval(img.movetime);
+                                imageContainer.removeChild(img);
+                            } else {
+                                img.style.left = `${left - step}px`;
+                                left -= step;
+                            }
+
+                            // 检查碰撞
+                            const rectImg = img.getBoundingClientRect();
+                            const rectDragon = dragon.getBoundingClientRect();
+                            if (rectImg.right > rectDragon.left &&
+                                rectImg.left < rectDragon.right &&
+                                rectImg.bottom > rectDragon.top &&
+                                rectImg.top < rectDragon.bottom) {
+                                clearInterval(img.movetime);
+                                imageContainer.removeChild(img);
+
+                                intervals.push(moveIntervalId); // 保存定时器ID
+                            }
+                        }, 16); // 16毫秒移动一次
+                    };
+                }
+                // 每7秒调用一次 addImage 函数
+                setInterval(addImage, 7000);
+
+
+
+
+                // 创建炸弹
+                createBomb()
+                // 炸弹出现的上下位置随机，距离页面顶部
+                function getRandomTop() {
+                    return Math.floor(Math.random() * (500 - 100 + 1)) + 100;
+                }
+
+                // 炸弹之间的时间间隔随机，
+                function getRandomInterval() {
+                    return Math.floor(Math.random() * (8000 - 6000 + 1)) + 6000;
+                }
+
+                function createBomb() {
+                    const azhadan = document.createElement("div");
+                    azhadan.className = "zhadan";
+                    azhadan.style.top = getRandomTop() + "px";
+                    azhadan.style.right = "-183px"; /* 初始时，炸弹在右侧之外 */
+
+                    wrap.appendChild(azhadan);
+                    moveBomb(azhadan);
+                }
+
+                // 炸弹移动计时器
+                function moveBomb(azhadan) {
+                    azhadan.movetime = setInterval(() => {
+                        const left = azhadan.offsetLeft - 5;
+                        if (left < -183) { // 当炸弹完全移出视窗清除计时器并移除炸弹元素
+                            clearInterval(azhadan.movetime);
+                            wrap.removeChild(azhadan);
+                        } else {
+                            azhadan.style.left = left + "px";
+                        }
+                    }, 40);
+                }
+
+                // 设置定时器，每隔一个随机间隔创建一个新的炸弹
+                creatzhadan = setInterval(() => {
+                    createBomb();
+                }, getRandomInterval());
+
+
+                // 检测dragon和zhadan是否碰撞
+                function checkCollision(dragon, zhadan) {
+                    const dragonRect = dragon.getBoundingClientRect();
+                    const zhadanRect = zhadan.getBoundingClientRect();
+                    return dragonRect.top < zhadanRect.bottom &&
+                        dragonRect.bottom > zhadanRect.top &&
+                        dragonRect.left < zhadanRect.right &&
+                        dragonRect.right > zhadanRect.left;
+                }
+
+
+
+                // 游戏结束
+                function gameOver() {
+                    // 清除所有定时器
+                    clearInterval(dragondown);
+                    clearInterval(creatzhadan);
+                    for (let intervalId of intervals) {
+                        clearInterval(intervalId);
+                    }
+                    //停止图片移动
+                    const images = document.getElementsByClassName('image');
+                    for (let img of images) {
+                        clearInterval(img.movetime); // 清除图片定时器
+                        imageContainer.removeChild(img); // 移除图片元素
+                    }
+                    intervals = []; // 清空数组
+                    imagesArray = [];
+
+                    // 停止炸弹移动
+                    const bombs = document.getElementsByClassName('zhadan');
+                    for (let i = 0; i < bombs.length; i++) {
+                        clearInterval(bombs[i].movetime);
+                        wrap.removeChild(bombs[i]);
+                    }
+                    // 停止地面动画
+                    const donghuaElement = document.getElementById('donghua');
+                    if (donghuaElement) {
+                        donghuaElement.style.animation = 'none';
+                    }
+                    // 停止云朵动画
+                    const yunpiaoElement = document.getElementById('yunpiao');
+                    if (yunpiaoElement) {
+                        yunpiaoElement.style.animation = 'none';
+                    }
+                    // 停止山动画
+                    const shanpiaoElement = document.getElementById('shanpiao');
+                    if (shanpiaoElement) {
+                        shanpiaoElement.style.animation = 'none';
+                    }
+
+
+                    // 游戏结束信息
+                    const gameOverElement = document.createElement('div');
+                    gameOverElement.textContent = '游戏结束！';
+                    gameOverElement.style.position = 'absolute';
+                    gameOverElement.style.top = '50%';
+                    gameOverElement.style.left = '50%';
+                    gameOverElement.style.transform = 'translate(-50%, -50%)';
+                    gameOverElement.style.fontSize = '72px';
+                    gameOverElement.style.color = 'red';
+                    document.body.appendChild(gameOverElement);
+
+
+                    // 添加“龙”按钮下载图片
+                    const dragonButton = document.createElement('button');
+                    dragonButton.textContent = '下载龙舞图片';
+                    dragonButton.style.position = 'absolute';
+                    dragonButton.style.bottom = '220px';
+                    dragonButton.style.left = '48%';
+                    dragonButton.style.transform = 'translateX(-50%)';
+                    dragonButton.style.padding = '5px 20px';
+                    dragonButton.style.fontSize = '50px';
+                    dragonButton.style.cursor = 'pointer';
+                    dragonButton.style.backgroundColor = 'rgba(82 90 175 / 75%)';
+                    dragonButton.style.color = 'white';
+                    dragonButton.style.border = 'none';
+                    dragonButton.style.borderRadius = '5px';
+                    dragonButton.addEventListener('click', function () {
+                        // 图片下载
+                        const imageUrl = 'https://easylink.cc/uzc28p';
+                        const link = document.createElement('a');
+                        link.href = imageUrl;
+                        link.download = 'dragon-image.jpg'; // 图片文件名
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    });
+                    document.body.appendChild(dragonButton);
+
+                }
+                //在moveBomb函数中添加碰撞检测
+                function moveBomb(azhadan) {
+                    azhadan.movetime = setInterval(() => {
+                        const left = azhadan.offsetLeft - 8;
+                        if (left < -183) {
+                            clearInterval(azhadan.movetime);
+                            wrap.removeChild(azhadan);
+                        } else {
+                            azhadan.style.left = left + "px";
+                            // 检测碰撞
+                            if (checkCollision(dragon, azhadan)) {
+                                gameOver(); // 如果碰撞调用游戏结束处理函数
+                            }
+                        }
+                    }, 40);
+                }
+            }
+
+        </script>
+</body>
+
+</html>
